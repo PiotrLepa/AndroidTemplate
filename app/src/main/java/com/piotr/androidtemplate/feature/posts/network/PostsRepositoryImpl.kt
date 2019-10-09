@@ -1,10 +1,10 @@
-package com.piotr.androidtemplate.feature.posts.network.repository
+package com.piotr.androidtemplate.feature.posts.network
 
 import androidx.lifecycle.LiveData
 import com.piotr.androidtemplate.base.network.repository.BaseRepository
 import com.piotr.androidtemplate.base.ui.livedata.CallState
-import com.piotr.androidtemplate.feature.posts.network.mapper.PostUiMapper
-import com.piotr.androidtemplate.feature.posts.ui.model.UiPost
+import com.piotr.androidtemplate.delegate.post.PostUiMapper
+import com.piotr.androidtemplate.delegate.post.UiPost
 import com.piotr.androidtemplate.service.posts.PostsService
 import kotlinx.coroutines.CoroutineScope
 

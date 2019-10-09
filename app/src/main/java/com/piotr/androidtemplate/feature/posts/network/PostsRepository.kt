@@ -1,8 +1,8 @@
-package com.piotr.androidtemplate.feature.posts.network.repository
+package com.piotr.androidtemplate.feature.posts.network
 
 import androidx.lifecycle.LiveData
 import com.piotr.androidtemplate.base.ui.livedata.CallState
-import com.piotr.androidtemplate.feature.posts.ui.model.UiPost
+import com.piotr.androidtemplate.delegate.post.UiPost
 import kotlinx.coroutines.CoroutineScope
 
 interface PostsRepository {

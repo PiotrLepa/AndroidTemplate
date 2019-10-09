@@ -1,7 +1,7 @@
 package com.piotr.androidtemplate.base.di
 
-import com.piotr.androidtemplate.feature.posts.network.repository.PostsRepository
-import com.piotr.androidtemplate.feature.posts.network.repository.PostsRepositoryImpl
+import com.piotr.androidtemplate.feature.posts.network.PostsRepository
+import com.piotr.androidtemplate.feature.posts.network.PostsRepositoryImpl
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance

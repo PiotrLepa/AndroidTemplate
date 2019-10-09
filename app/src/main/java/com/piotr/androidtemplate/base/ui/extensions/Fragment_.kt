@@ -1,5 +1,7 @@
 package com.piotr.androidtemplate.base.ui.extensions
 
+import android.view.animation.AnimationUtils
+import androidx.annotation.AnimRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.FontRes
@@ -24,3 +26,6 @@ fun Fragment.getDimenPixel(@DimenRes dimenRes: Int) = resources.getDimensionPixe
 fun Fragment.getFont(@FontRes fontRes: Int) = ResourcesCompat.getFont(requireContext(), fontRes)!!
 
 fun Fragment.getInt(@IntegerRes intRes: Int) = resources.getInteger(intRes)
+
+fun Fragment.loadLayoutAnimation(@AnimRes animRes: Int) =
+  AnimationUtils.loadLayoutAnimation(requireContext(), animRes)

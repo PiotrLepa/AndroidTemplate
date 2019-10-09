@@ -1,6 +1,6 @@
 package com.piotr.androidtemplate.base.di
 
-import com.piotr.androidtemplate.feature.posts.network.mapper.PostUiMapper
+import com.piotr.androidtemplate.delegate.post.PostUiMapper
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton

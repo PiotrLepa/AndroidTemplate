@@ -1,4 +1,4 @@
-package com.piotr.androidtemplate.feature.posts.ui.model
+package com.piotr.androidtemplate.delegate.post
 
 import com.piotr.androidtemplate.base.ui.adapter.base.BaseDelegateItem
 
