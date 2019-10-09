@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "kotlin-kapt"
+
+apply plugin: "androidx.navigation.safeargs"
+
 android {
   compileSdkVersion 29
   buildToolsVersion "29.0.2"
@@ -25,11 +29,42 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+  // Kotlin
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.core:core-ktx:1.1.0'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-  testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+  // Android Core
+  implementation "androidx.appcompat:appcompat:${lib_versions.appcompat}"
+  implementation "androidx.core:core-ktx:${lib_versions.coreKtx}"
+  implementation "androidx.constraintlayout:constraintlayout:${lib_versions.constraintLayout}"
+  implementation "com.google.android.material:material:${lib_versions.material}"
+  implementation "androidx.recyclerview:recyclerview:${lib_versions.recyclerview}"
+
+  // MVVM
+  implementation "androidx.lifecycle:lifecycle-viewmodel:${lib_versions.lifecycle}"
+  implementation "androidx.lifecycle:lifecycle-extensions:${lib_versions.lifecycle}"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${lib_versions.lifecycle}"
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:${lib_versions.lifecycle}"
+
+  // Dependency Injection
+  implementation "org.kodein.di:kodein-di-generic-jvm:${lib_versions.kodein}"
+
+  // Navigation
+  implementation "android.arch.navigation:navigation-fragment-ktx:${lib_versions.navigation}"
+  implementation "android.arch.navigation:navigation-ui-ktx:${lib_versions.navigation}"
+
+  // Image loading
+  implementation "com.github.bumptech.glide:glide:${lib_versions.glide}"
+  kapt "com.github.bumptech.glide:compiler:${lib_versions.glide}"
+
+  // Logging
+  implementation "com.jakewharton.timber:timber:${lib_versions.timber}"
+
+  // Spannable strings
+  implementation "com.binaryfork:spanny:${lib_versions.spanny}"
+
+  // Testing
+  testImplementation "junit:junit:${lib_versions.junit}"
+  androidTestImplementation "androidx.test:runner:${lib_versions.testRunner}"
+  androidTestImplementation "androidx.test.espresso:espresso-core:${lib_versions.espresso}"
 }
