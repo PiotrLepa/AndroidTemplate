@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.piotr.androidtemplate.R
 import com.piotr.androidtemplate.base.ui.extensions.loadLayoutAnimation
@@ -15,7 +16,9 @@ import com.piotr.androidtemplate.base.ui.livedata.CallState.Success
 import com.piotr.androidtemplate.base.ui.recyclerview.VerticalSpacingDecorator
 import com.piotr.androidtemplate.delegate.post.UiPost
 import com.piotr.androidtemplate.feature.posts.ui.adapter.PostsAdapter
+import kotlinx.android.synthetic.main.fragment_posts.errorView
 import kotlinx.android.synthetic.main.fragment_posts.recyclerView
+import kotlinx.android.synthetic.main.fragment_posts.swipeRefresh
 
 class PostsFragment : BaseFragment() {
 
@@ -33,6 +36,7 @@ class PostsFragment : BaseFragment() {
     view: View,
     savedInstanceState: Bundle?
   ) {
+    setupSwipeRefresh()
     setupRecyclerView()
     observePosts()
   }
@@ -44,13 +48,18 @@ class PostsFragment : BaseFragment() {
   private fun renderPostsCallState(state: CallState<List<UiPost>>) {
     when (state) {
       is Progress -> {
-
+        swipeRefresh.isRefreshing = true
+        errorView.isVisible = false
       }
       is Success -> {
+        swipeRefresh.isRefreshing = false
+        recyclerView.isVisible = true
         listAdapter.submitList(state.result)
       }
       is Error -> {
-
+        swipeRefresh.isRefreshing = false
+        recyclerView.isVisible = false
+        errorView.show(state.cause, R.string.posts_fetch_error)
       }
     }
   }
@@ -62,5 +71,9 @@ class PostsFragment : BaseFragment() {
       layoutAnimation = loadLayoutAnimation(R.anim.layout_fall_down)
       addItemDecoration(VerticalSpacingDecorator(R.dimen.item_space))
     }
+  }
+
+  private fun setupSwipeRefresh() {
+    swipeRefresh.setOnRefreshListener(viewModel::refresh)
   }
 }

@@ -1,3 +1,7 @@
 package com.piotr.androidtemplate.base.network
 
-class EmptyResponseException : Throwable()
+import java.io.IOException
+
+class NoInternetConnectionException : IOException()
+
+class EmptyResponseException : Exception()

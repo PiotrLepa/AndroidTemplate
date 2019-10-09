@@ -1,8 +1,15 @@
 <resources>
   <string name="app_name">AndroidTemplate</string>
 
+  <!--  errors  -->
+  <string name="no_internet_connection">Brak połączenia z internetem</string>
+  <string name="no_data_to_show">Brak danych do wyświetletnia</string>
+
   <!--  dialog  -->
   <string name="dialog_yes">Tak</string>
   <string name="dialog_no">Nie</string>
+
+  <!--  posts   -->
+  <string name="posts_fetch_error">Nie udało się pobrać postów</string>
 
 </resources>

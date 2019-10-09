@@ -2,6 +2,7 @@ package com.piotr.androidtemplate.base.network.interceptor
 
 import android.content.Context
 import android.net.ConnectivityManager
+import com.piotr.androidtemplate.base.network.NoInternetConnectionException
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -11,7 +12,7 @@ class ConnectivityInterceptor(private val context: Context) : Interceptor {
   @Throws(IOException::class)
   override fun intercept(chain: Interceptor.Chain): Response {
     if (!isOnline(context)) {
-      throw NetworkConnectivityException()
+      throw NoInternetConnectionException()
     }
 
     val builder = chain.request()
@@ -26,6 +27,4 @@ class ConnectivityInterceptor(private val context: Context) : Interceptor {
     val netInfo = connectivityManager.activeNetworkInfo
     return netInfo != null && netInfo.isConnected
   }
-
-  class NetworkConnectivityException : IOException()
 }

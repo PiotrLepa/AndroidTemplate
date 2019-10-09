@@ -12,6 +12,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import retrofit2.HttpException
 import retrofit2.Response
+import java.lang.reflect.UndeclaredThrowableException
 
 abstract class BaseRepository {
 
@@ -30,7 +31,7 @@ abstract class BaseRepository {
         emit(Progress())
         emit(unpackResponse(this@unpackAndTransform, transform))
       } catch (e: Exception) { // catch our exception eg ConnectivityException
-        emit(Error(e))
+        emit(Error(mapExceptionFromRetrofit(e)))
       }
     }
 
@@ -52,4 +53,12 @@ abstract class BaseRepository {
     } else {
       Error(EmptyResponseException())
     }
+
+  private fun mapExceptionFromRetrofit(e: Exception): Exception {
+    return if (e is UndeclaredThrowableException) {
+      e.cause as? Exception ?: Exception()
+    } else {
+      e
+    }
+  }
 }

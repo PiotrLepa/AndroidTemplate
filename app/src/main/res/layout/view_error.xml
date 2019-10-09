@@ -7,8 +7,6 @@
     android:layout_marginStart="@dimen/margin24"
     android:layout_marginEnd="@dimen/margin24"
     android:orientation="vertical"
-    android:visibility="gone"
-    tools:visibility="visible"
     >
 
   <ImageView
@@ -23,9 +21,7 @@
       android:id="@+id/errorTextView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/margin24"
       android:layout_marginTop="@dimen/margin18"
-      android:layout_marginEnd="@dimen/margin24"
       android:fontFamily="@font/lato_bold"
       android:lineSpacingExtra="6dp"
       android:textAlignment="center"
