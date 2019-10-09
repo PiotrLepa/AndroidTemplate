@@ -23,6 +23,10 @@ buildscript {
       'timber': '4.7.1',
       'flexbox': '1.1.0',
       'kodein': '6.4.1',
+      'gson': '2.8.5',
+      'retrofit': '2.6.1',
+      'okhttp': '3.14.1',
+      'jodaDateTime': '2.10.3',
       'spanny': '1.0.4'
   ]
 

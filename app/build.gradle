@@ -18,12 +18,27 @@ android {
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    buildConfigField "String", "API_ENDPOINT", '"https://jsonplaceholder.typicode.com/"'
   }
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
+  }
+
+  compileOptions {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+
+  androidExtensions {
+    experimental = true
   }
 }
 
@@ -48,10 +63,20 @@ dependencies {
 
   // Dependency Injection
   implementation "org.kodein.di:kodein-di-generic-jvm:${lib_versions.kodein}"
+  implementation "org.kodein.di:kodein-di-framework-android-x:${lib_versions.kodein}"
 
   // Navigation
   implementation "android.arch.navigation:navigation-fragment-ktx:${lib_versions.navigation}"
   implementation "android.arch.navigation:navigation-ui-ktx:${lib_versions.navigation}"
+
+  // JSON parsing
+  implementation "com.google.code.gson:gson:${lib_versions.gson}"
+  
+  // Networking
+  implementation "com.squareup.retrofit2:retrofit:${lib_versions.retrofit}"
+  implementation "com.squareup.retrofit2:converter-gson:${lib_versions.retrofit}"
+  implementation "com.squareup.okhttp3:okhttp:${lib_versions.okhttp}"
+  implementation "com.squareup.okhttp3:logging-interceptor:${lib_versions.okhttp}"
 
   // Image loading
   implementation "com.github.bumptech.glide:glide:${lib_versions.glide}"
@@ -62,6 +87,9 @@ dependencies {
 
   // Spannable strings
   implementation "com.binaryfork:spanny:${lib_versions.spanny}"
+
+  // DateTime
+  implementation "net.danlew:android.joda:${lib_versions.jodaDateTime}"
 
   // Testing
   testImplementation "junit:junit:${lib_versions.junit}"
