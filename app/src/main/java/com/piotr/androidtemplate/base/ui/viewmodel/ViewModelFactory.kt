@@ -10,7 +10,7 @@ class ViewModelFactory(private val kodein: Kodein) : ViewModelProvider.Factory {
 
   @Suppress("UNCHECKED_CAST")
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
-    val provider: () -> ViewModel = kodein.direct.provider(modelClass.simpleName)
+    val provider: () -> ViewModel = kodein.direct.provider(modelClass.name)
     return provider() as T
   }
 }

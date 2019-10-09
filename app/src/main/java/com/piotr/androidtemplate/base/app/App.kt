@@ -2,6 +2,7 @@ package com.piotr.androidtemplate.base.app
 
 import android.app.Application
 import com.piotr.androidtemplate.BuildConfig
+import com.piotr.androidtemplate.base.di.MapperModule
 import com.piotr.androidtemplate.base.di.RepositoryModule
 import com.piotr.androidtemplate.base.di.ServiceModule
 import com.piotr.androidtemplate.base.di.ViewModelModule
@@ -19,6 +20,7 @@ class App : Application(), KodeinAware {
     import(androidXModule(this@App))
     import(ViewModelModule())
     import(NetworkModule())
+    import(MapperModule())
     import(RepositoryModule())
     import(ServiceModule())
   }
