@@ -26,16 +26,26 @@ abstract class BaseRepository {
     transform: (T) -> U
   ): LiveData<CallState<U>> =
     liveData(scope.coroutineContext) {
-      emit(Progress())
-      val response = this@unpackAndTransform.await()
-      if (response.isSuccessful) {
-        emit(tryTransform(response.body(), transform))
-      } else {
-        emit(Error(HttpException(response)))
+      try {
+        emit(Progress())
+        emit(unpackResponse(this@unpackAndTransform, transform))
+      } catch (e: Exception) { // catch our exception eg ConnectivityException
+        emit(Error(e))
       }
     }
 
-  private fun <T, U> tryTransform(body: T?, transform: (T) -> U): CallState<U> =
+  private suspend fun <T, U> unpackResponse(
+    deferred: Deferred<Response<T>>,
+    transform: (T) -> U
+  ): CallState<U> = with(deferred.await()) {
+    return if (isSuccessful) {
+      transformOrError(body(), transform)
+    } else {
+      Error(HttpException(this))
+    }
+  }
+
+  private fun <T, U> transformOrError(body: T?, transform: (T) -> U): CallState<U> =
     if (body != null) {
       val transformed = transform(body)
       Success(transformed)

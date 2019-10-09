@@ -8,10 +8,6 @@ import java.io.IOException
 
 class ConnectivityInterceptor(private val context: Context) : Interceptor {
 
-  companion object {
-    const val NO_INTERNET_CONNECTION = "No internet connection"
-  }
-
   @Throws(IOException::class)
   override fun intercept(chain: Interceptor.Chain): Response {
     if (!isOnline(context)) {
@@ -19,18 +15,17 @@ class ConnectivityInterceptor(private val context: Context) : Interceptor {
     }
 
     val builder = chain.request()
-        .newBuilder()
+      .newBuilder()
     return chain.proceed(builder.build())
   }
 
   private fun isOnline(context: Context): Boolean {
     val connectivityManager = context.getSystemService(
-        Context.CONNECTIVITY_SERVICE
+      Context.CONNECTIVITY_SERVICE
     ) as ConnectivityManager// TODO change to kodein
     val netInfo = connectivityManager.activeNetworkInfo
     return netInfo != null && netInfo.isConnected
   }
 
-  class NetworkConnectivityException : IOException(NO_INTERNET_CONNECTION)
-
+  class NetworkConnectivityException : IOException()
 }
