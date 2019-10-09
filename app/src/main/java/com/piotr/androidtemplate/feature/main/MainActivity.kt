@@ -1,7 +1,8 @@
-package com.piotr.androidtemplate
+package com.piotr.androidtemplate.feature.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.piotr.androidtemplate.R
 
 class MainActivity : AppCompatActivity() {
 

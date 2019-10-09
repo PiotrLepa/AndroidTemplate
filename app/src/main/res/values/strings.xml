@@ -1,3 +1,8 @@
 <resources>
   <string name="app_name">AndroidTemplate</string>
+
+  <!--  dialog  -->
+  <string name="dialog_yes">Tak</string>
+  <string name="dialog_no">Nie</string>
+
 </resources>

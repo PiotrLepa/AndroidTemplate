@@ -1,4 +1,4 @@
-package com.piotr.androidtemplate.base.ui
+package com.piotr.androidtemplate.base.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

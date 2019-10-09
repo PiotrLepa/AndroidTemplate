@@ -1,4 +1,4 @@
-package com.piotr.androidtemplate.base.ui
+package com.piotr.androidtemplate.base.ui.livedata
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
