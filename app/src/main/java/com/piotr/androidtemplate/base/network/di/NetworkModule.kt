@@ -3,6 +3,7 @@ package com.piotr.androidtemplate.base.network.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.piotr.androidtemplate.BuildConfig
+import com.piotr.androidtemplate.base.network.calladapter.DeferredCallAdapterFactory
 import com.piotr.androidtemplate.base.network.interceptor.ConnectivityInterceptor
 import com.piotr.androidtemplate.base.network.logger.NetworkLogger
 import okhttp3.OkHttpClient
@@ -19,24 +20,24 @@ object NetworkModule {
   operator fun invoke() = Kodein.Module(name = "NetworkModule") {
 
     bind<Gson>() with singleton { GsonBuilder().create() }
-
     bind() from singleton { NetworkLogger() }
 
     bind<OkHttpClient>() with singleton {
       OkHttpClient.Builder()
-          .addInterceptor(HttpLoggingInterceptor(instance()).also {
-            it.level = HttpLoggingInterceptor.Level.BODY
-          })
-          .addInterceptor(ConnectivityInterceptor(instance()))
-          .build()
+        .addInterceptor(HttpLoggingInterceptor(instance()).also {
+          it.level = HttpLoggingInterceptor.Level.BODY
+        })
+        .addInterceptor(ConnectivityInterceptor(instance()))
+        .build()
     }
 
     bind<Retrofit>() with singleton {
       Retrofit.Builder()
-          .baseUrl(BuildConfig.API_ENDPOINT)
-          .client(instance())
-          .addConverterFactory(GsonConverterFactory.create(instance()))
-          .build()
+        .baseUrl(BuildConfig.API_ENDPOINT)
+        .client(instance())
+        .addConverterFactory(GsonConverterFactory.create(instance()))
+        .addCallAdapterFactory(DeferredCallAdapterFactory())
+        .build()
     }
   }
 }

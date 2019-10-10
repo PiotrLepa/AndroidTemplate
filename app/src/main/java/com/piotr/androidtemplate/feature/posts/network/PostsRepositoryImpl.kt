@@ -14,7 +14,7 @@ class PostsRepositoryImpl(
 ) : BaseRepository(), PostsRepository {
 
   override fun getPosts(scope: CoroutineScope): LiveData<CallState<List<UiPost>>> =
-    createCallAsync(scope) { service.getPosts() }
+    service.getPosts()
       .unpackAndTransform(scope) {
         it.map(mapper::mapToUi)
       }

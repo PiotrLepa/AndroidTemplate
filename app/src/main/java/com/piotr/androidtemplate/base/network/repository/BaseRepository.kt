@@ -9,18 +9,10 @@ import com.piotr.androidtemplate.base.ui.livedata.CallState.Progress
 import com.piotr.androidtemplate.base.ui.livedata.CallState.Success
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
 import retrofit2.HttpException
 import retrofit2.Response
-import java.lang.reflect.UndeclaredThrowableException
 
 abstract class BaseRepository {
-
-  fun <T> createCallAsync(
-    scope: CoroutineScope,
-    transform: suspend () -> Response<T>
-  ): Deferred<Response<T>> =
-    scope.async { transform() }
 
   fun <T, U> Deferred<Response<T>>.unpackAndTransform(
     scope: CoroutineScope,
@@ -31,7 +23,7 @@ abstract class BaseRepository {
         emit(Progress())
         emit(unpackResponse(this@unpackAndTransform, transform))
       } catch (e: Exception) { // catch our exception eg ConnectivityException
-        emit(Error(mapExceptionFromRetrofit(e)))
+        emit(Error(e))
       }
     }
 
@@ -53,12 +45,4 @@ abstract class BaseRepository {
     } else {
       Error(EmptyResponseException())
     }
-
-  private fun mapExceptionFromRetrofit(e: Exception): Exception {
-    return if (e is UndeclaredThrowableException) {
-      e.cause as? Exception ?: Exception()
-    } else {
-      e
-    }
-  }
 }
