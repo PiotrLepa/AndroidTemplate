@@ -26,6 +26,7 @@ buildscript {
       'gson': '2.8.5',
       'retrofit': '2.6.2',
       'okhttp': '3.14.1',
+      'firebase': '17.2.0',
       'jodaDateTime': '2.10.3',
       'spanny': '1.0.4'
   ]
@@ -38,6 +39,7 @@ buildscript {
     classpath 'com.android.tools.build:gradle:3.5.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
+    classpath 'com.google.gms:google-services:4.3.2'
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
