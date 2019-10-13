@@ -48,9 +48,7 @@ class PostsFragment : BaseFragment() {
 
   private fun observePosts() {
     viewModel.posts.observeBy(::renderPostsCallState)
-    viewModel.postsFirebase.observeBy {
-      listAdapter.submitList(it)
-    }
+    viewModel.postsFirebase.observeBy(listAdapter::submitList)
   }
 
   private fun renderPostsCallState(state: CallState<List<UiPost>>) {
