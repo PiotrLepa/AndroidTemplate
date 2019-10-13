@@ -81,7 +81,8 @@ dependencies {
   implementation "com.squareup.okhttp3:logging-interceptor:${lib_versions.okhttp}"
 
   // Firebase
-  implementation "com.google.firebase:firebase-analytics:${lib_versions.firebase}"
+  implementation "com.google.firebase:firebase-analytics:${lib_versions.firebaseCore}"
+  implementation "com.google.firebase:firebase-database:${lib_versions.firebaseDatabase}"
 
   // Image loading
   implementation "com.github.bumptech.glide:glide:${lib_versions.glide}"

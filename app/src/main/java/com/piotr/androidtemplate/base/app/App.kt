@@ -2,6 +2,7 @@ package com.piotr.androidtemplate.base.app
 
 import android.app.Application
 import com.piotr.androidtemplate.BuildConfig
+import com.piotr.androidtemplate.base.di.FirebaseModule
 import com.piotr.androidtemplate.base.di.MapperModule
 import com.piotr.androidtemplate.base.di.RepositoryModule
 import com.piotr.androidtemplate.base.di.ServiceModule
@@ -23,6 +24,7 @@ class App : Application(), KodeinAware {
     import(MapperModule())
     import(RepositoryModule())
     import(ServiceModule())
+    import(FirebaseModule())
   }
 
   override fun onCreate() {

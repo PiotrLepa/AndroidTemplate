@@ -26,7 +26,8 @@ buildscript {
       'gson': '2.8.5',
       'retrofit': '2.6.2',
       'okhttp': '3.14.1',
-      'firebase': '17.2.0',
+      'firebaseCore': '17.2.0',
+      'firebaseDatabase': '19.1.0',
       'jodaDateTime': '2.10.3',
       'spanny': '1.0.4'
   ]

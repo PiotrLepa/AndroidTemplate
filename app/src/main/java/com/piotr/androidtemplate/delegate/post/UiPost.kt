@@ -6,4 +6,7 @@ data class UiPost(
   override val id: Int,
   val title: String,
   val body: String
-) : BaseDelegateItem
+) : BaseDelegateItem {
+
+  constructor() : this(0, "", "")
+}

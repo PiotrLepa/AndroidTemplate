@@ -2,6 +2,7 @@ package com.piotr.androidtemplate.base.di
 
 import com.piotr.androidtemplate.base.di.extensions.bindViewModel
 import com.piotr.androidtemplate.base.ui.viewmodel.ViewModelFactory
+import com.piotr.androidtemplate.feature.common.FIREBASE_POSTS_NODE
 import com.piotr.androidtemplate.feature.posts.ui.PostsViewModel
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
@@ -14,6 +15,11 @@ object ViewModelModule {
   operator fun invoke() = Kodein.Module(name = "ViewModelModule") {
     bind() from singleton { ViewModelFactory(kodein) }
 
-    bindViewModel<PostsViewModel>() with provider { PostsViewModel(instance()) }
+    bindViewModel<PostsViewModel>() with provider {
+      PostsViewModel(
+        instance(),
+        instance(arg = FIREBASE_POSTS_NODE)
+      )
+    }
   }
 }
