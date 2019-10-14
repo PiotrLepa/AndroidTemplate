@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.piotr.androidtemplate.R
 import com.piotr.androidtemplate.base.ui.extensions.loadLayoutAnimation
-import com.piotr.androidtemplate.base.ui.firebase.FirebaseInteractor
 import com.piotr.androidtemplate.base.ui.fragment.BaseFragment
 import com.piotr.androidtemplate.base.ui.livedata.CallState
 import com.piotr.androidtemplate.base.ui.livedata.CallState.Error
@@ -16,19 +15,15 @@ import com.piotr.androidtemplate.base.ui.livedata.CallState.Progress
 import com.piotr.androidtemplate.base.ui.livedata.CallState.Success
 import com.piotr.androidtemplate.base.ui.recyclerview.VerticalSpacingDecorator
 import com.piotr.androidtemplate.delegate.post.UiPost
-import com.piotr.androidtemplate.feature.common.FIREBASE_POSTS_NODE
 import com.piotr.androidtemplate.feature.posts.ui.adapter.PostsAdapter
 import kotlinx.android.synthetic.main.fragment_posts.errorView
 import kotlinx.android.synthetic.main.fragment_posts.progressButton
 import kotlinx.android.synthetic.main.fragment_posts.recyclerView
 import kotlinx.android.synthetic.main.fragment_posts.swipeRefresh
-import org.kodein.di.generic.instance
 
 class PostsFragment : BaseFragment() {
 
   private val viewModel: PostsViewModel by viewModel()
-
-  private val firebaseInteractor: FirebaseInteractor by instance(arg = FIREBASE_POSTS_NODE)
 
   private val listAdapter by lazy { PostsAdapter() }
 
@@ -64,7 +59,6 @@ class PostsFragment : BaseFragment() {
         swipeRefresh.isRefreshing = false
         recyclerView.isVisible = true
         progressButton.isLoading = false
-        firebaseInteractor.setListValue(state.result)
       }
       is Error -> {
         swipeRefresh.isRefreshing = false
