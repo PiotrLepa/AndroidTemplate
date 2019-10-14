@@ -17,6 +17,7 @@ import com.piotr.androidtemplate.base.ui.recyclerview.VerticalSpacingDecorator
 import com.piotr.androidtemplate.delegate.post.UiPost
 import com.piotr.androidtemplate.feature.posts.ui.adapter.PostsAdapter
 import kotlinx.android.synthetic.main.fragment_posts.errorView
+import kotlinx.android.synthetic.main.fragment_posts.progressButton
 import kotlinx.android.synthetic.main.fragment_posts.recyclerView
 import kotlinx.android.synthetic.main.fragment_posts.swipeRefresh
 
@@ -37,6 +38,7 @@ class PostsFragment : BaseFragment() {
     savedInstanceState: Bundle?
   ) {
     setupSwipeRefresh()
+    setupProgressButton()
     setupRecyclerView()
     observePosts()
   }
@@ -49,16 +51,19 @@ class PostsFragment : BaseFragment() {
     when (state) {
       is Progress -> {
         swipeRefresh.isRefreshing = true
+        progressButton.isLoading = true
         errorView.isVisible = false
       }
       is Success -> {
         swipeRefresh.isRefreshing = false
         recyclerView.isVisible = true
+        progressButton.isLoading = false
         listAdapter.submitList(state.result)
       }
       is Error -> {
         swipeRefresh.isRefreshing = false
         recyclerView.isVisible = false
+        progressButton.isLoading = false
         errorView.show(state.cause, R.string.posts_fetch_error)
       }
     }
@@ -71,6 +76,10 @@ class PostsFragment : BaseFragment() {
       layoutAnimation = loadLayoutAnimation(R.anim.layout_fall_down)
       addItemDecoration(VerticalSpacingDecorator(R.dimen.item_space))
     }
+  }
+
+  private fun setupProgressButton() {
+    progressButton.setOnClickListener(viewModel::refresh)
   }
 
   private fun setupSwipeRefresh() {

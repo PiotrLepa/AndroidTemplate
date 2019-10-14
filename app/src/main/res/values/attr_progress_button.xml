@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="ProgressButton">
+    <attr name="android:text" />
+    <attr name="textOnLoading" format="string" />
+    <attr name="isLoading" format="boolean" />
+  </declare-styleable>
+</resources>

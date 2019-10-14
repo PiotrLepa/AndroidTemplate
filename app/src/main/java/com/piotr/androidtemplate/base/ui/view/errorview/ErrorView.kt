@@ -1,4 +1,4 @@
-package com.piotr.androidtemplate.base.ui.view
+package com.piotr.androidtemplate.base.ui.view.errorview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,9 +10,9 @@ import com.piotr.androidtemplate.R
 import com.piotr.androidtemplate.R.string
 import com.piotr.androidtemplate.base.network.EmptyResponseException
 import com.piotr.androidtemplate.base.network.NoInternetConnectionException
-import com.piotr.androidtemplate.base.ui.view.ErrorViewIcon.DEFAULT
-import com.piotr.androidtemplate.base.ui.view.ErrorViewIcon.NO_DATA
-import com.piotr.androidtemplate.base.ui.view.ErrorViewIcon.NO_INTERNET_CONNECTION
+import com.piotr.androidtemplate.base.ui.view.errorview.ErrorViewIcon.DEFAULT
+import com.piotr.androidtemplate.base.ui.view.errorview.ErrorViewIcon.NO_DATA
+import com.piotr.androidtemplate.base.ui.view.errorview.ErrorViewIcon.NO_INTERNET_CONNECTION
 import kotlinx.android.synthetic.main.view_error.view.errorImageView
 import kotlinx.android.synthetic.main.view_error.view.errorTextView
 

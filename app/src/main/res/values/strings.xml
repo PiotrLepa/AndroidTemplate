@@ -11,5 +11,7 @@
 
   <!--  posts   -->
   <string name="posts_fetch_error">Nie udało się pobrać postów</string>
+  <string name="fetch">Pobierz</string>
+  <string name="fetching">Pobieranie</string>
 
 </resources>
