@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/margin24"
+    android:layout_marginEnd="@dimen/margin24"
+    android:orientation="vertical"
+    >
+
+  <ImageView
+      android:id="@+id/errorImageView"
+      android:layout_width="64dp"
+      android:layout_height="64dp"
+      android:layout_gravity="center_horizontal"
+      tools:srcCompat="@drawable/ic_error"
+      />
+
+  <TextView
+      android:id="@+id/errorTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin18"
+      android:fontFamily="@font/lato_bold"
+      android:lineSpacingExtra="6dp"
+      android:textAlignment="center"
+      android:textColor="@color/dividerColor"
+      android:textSize="@dimen/textSize14"
+      tools:text="Nie udało się pobrać danych"
+      />
+</LinearLayout>

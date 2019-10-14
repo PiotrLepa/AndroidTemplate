@@ -1,7 +1,35 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
   ext.kotlin_version = '1.3.50'
+
+  ext.sdk_versions = ['compileSdk': 29,
+      'minSdk': 21,
+      'targetSdk': 29,
+      'buildTools': "29.0.2"]
+
+  ext.lib_versions = [
+      'androidx': '1.2.0-alpha03',
+      'appcompat': '1.1.0',
+      'constraintLayout': '2.0.0-beta2',
+      'coreKtx': '1.2.0-alpha04',
+      'espresso': '3.2.0',
+      'glide': '4.9.0',
+      'junit': '4.12',
+      'lifecycle': '2.2.0-alpha05',
+      'material': '1.0.0',
+      'recyclerview': '1.1.0-beta04',
+      'navigation': '1.0.0',
+      'supportLibrary': '28.0.0',
+      'testRunner': '1.2.0',
+      'timber': '4.7.1',
+      'flexbox': '1.1.0',
+      'kodein': '6.4.1',
+      'gson': '2.8.5',
+      'retrofit': '2.6.2',
+      'okhttp': '3.14.1',
+      'jodaDateTime': '2.10.3',
+      'spanny': '1.0.4'
+  ]
+
   repositories {
     google()
     jcenter()
@@ -9,6 +37,7 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:3.5.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
@@ -18,6 +47,7 @@ allprojects {
   repositories {
     google()
     jcenter()
+    maven { url 'https://maven.google.com/' }
   }
 }
 
