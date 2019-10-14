@@ -1,4 +1,4 @@
-package com.piotr.androidtemplate.base.ui.view
+package com.piotr.androidtemplate.base.ui.view.errorview
 
 import androidx.annotation.DrawableRes
 import com.piotr.androidtemplate.R
